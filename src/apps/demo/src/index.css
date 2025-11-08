@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* Configure dark mode to use class strategy */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Define custom theme colors - new in Tailwind CSS 4 */
+@theme {
+  /* Primary color (indigo) - Light mode (default) */
+  --color-primary: #6366f1;
+  --color-primary-50: #eef2ff;
+  --color-primary-100: #e0e7ff;
+  --color-primary-200: #c7d2fe;
+  --color-primary-300: #a5b4fc;
+  --color-primary-400: #818cf8;
+  --color-primary-500: #6366f1;
+  --color-primary-600: #4f46e5;
+  --color-primary-700: #4338ca;
+  --color-primary-800: #3730a3;
+  --color-primary-900: #312e81;
+  --color-primary-950: #1e1b4b;
+  
+  /* Custom accent color */
+  --color-accent: #f59e0b;
+  
+  /* Showcase color - Pastel blue in light mode */
+  --color-showcase-50: #dbeafe;
+  --color-showcase-100: #bfdbfe;
+  --color-showcase-500: #60a5fa;
+  --color-showcase-600: #3b82f6;
+  --color-showcase-700: #2563eb;
+  --color-showcase-900: #1e40af;
+}
+
+/* Override primary color for dark mode - brighter/more vibrant */
+.dark {
+  --color-primary: #818cf8;
+  --color-primary-50: #1e1b4b;
+  --color-primary-100: #312e81;
+  --color-primary-200: #3730a3;
+  --color-primary-300: #4f46e5;
+  --color-primary-400: #6366f1;
+  --color-primary-500: #818cf8;
+  --color-primary-600: #a5b4fc;
+  --color-primary-700: #c7d2fe;
+  --color-primary-800: #ddd6fe;
+  --color-primary-900: #e0e7ff;
+  --color-primary-950: #1e1b4b;
+  
+  /* Brighter accent for dark mode */
+  --color-accent: #fbbf24;
+  
+  /* Showcase color - Green in dark mode! */
+  --color-showcase-50: #064e3b;
+  --color-showcase-100: #065f46;
+  --color-showcase-500: #10b981;
+  --color-showcase-600: #34d399;
+  --color-showcase-700: #6ee7b7;
+  --color-showcase-900: #d1fae5;
+}
+
