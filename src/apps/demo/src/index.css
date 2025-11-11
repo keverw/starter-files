@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* Configure dark mode to use class strategy */
 @custom-variant dark (&:where(.dark, .dark *));
@@ -18,10 +18,10 @@
   --color-primary-800: #3730a3;
   --color-primary-900: #312e81;
   --color-primary-950: #1e1b4b;
-  
+
   /* Custom accent color */
   --color-accent: #f59e0b;
-  
+
   /* Showcase color - Pastel blue in light mode */
   --color-showcase-50: #dbeafe;
   --color-showcase-100: #bfdbfe;
@@ -45,10 +45,10 @@
   --color-primary-800: #ddd6fe;
   --color-primary-900: #e0e7ff;
   --color-primary-950: #1e1b4b;
-  
+
   /* Brighter accent for dark mode */
   --color-accent: #fbbf24;
-  
+
   /* Showcase color - Green in dark mode! */
   --color-showcase-50: #064e3b;
   --color-showcase-100: #065f46;
@@ -58,3 +58,63 @@
   --color-showcase-900: #d1fae5;
 }
 
+/* ===== Testing @apply directive (WITHOUT @layer) ===== */
+/* @apply can ONLY use Tailwind utilities, never custom classes */
+.btn-fancy {
+  @apply rounded-lg bg-accent px-6 py-3 font-bold text-gray-900 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl dark:text-gray-900;
+}
+
+.card-glass {
+  @apply rounded-2xl bg-white/80 p-6 shadow-2xl backdrop-blur-sm dark:bg-gray-800/80;
+}
+
+/* Without @layer, utility classes might not override this reliably */
+.test-without-layer {
+  @apply bg-red-500 p-4;
+}
+
+/* ===== Testing @utility directive ===== */
+/* Create new utility classes that work like native Tailwind utilities */
+@utility content-auto {
+  content-visibility: auto;
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility glass-effect {
+  backdrop-filter: blur(10px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* ===== Testing @layer directive ===== */
+/* Classes in @layer have proper specificity and work with Tailwind's cascade */
+@layer components {
+  .btn-layer-success {
+    @apply rounded-lg bg-green-600 px-4 py-2 font-semibold text-white transition-all duration-200 hover:scale-105 hover:bg-green-700;
+  }
+
+  .badge-info {
+    @apply inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800 dark:bg-blue-900/50 dark:text-blue-200;
+  }
+
+  /* With @layer, you can easily override with utility classes */
+  .test-with-layer {
+    @apply bg-red-500 p-4;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .bg-gradient-radial {
+    background: radial-gradient(
+      circle,
+      var(--color-primary-400),
+      var(--color-primary-700)
+    );
+  }
+}

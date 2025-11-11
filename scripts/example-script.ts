@@ -1,40 +1,20 @@
-// Example build/utility script
-// ESLint will check this file too!
+// Example script demonstrating TypeScript + ESLint in scripts folder
+// Run with: bun run scripts/example-script.ts
 
-interface BuildOptions {
-  isDevelopment: boolean;
-  hasSourceMaps: boolean;
+interface User {
+  name: string;
+  isActive: boolean;
 }
 
-export function buildProject(options: BuildOptions): void {
-  const { isDevelopment, hasSourceMaps } = options;
-  
-  console.log('Building project...');
-  console.log(`Development mode: ${isDevelopment}`);
-  console.log(`Source maps enabled: ${hasSourceMaps}`);
-  
-  // Your build logic here
-  const isSuccessful = performBuild(isDevelopment, hasSourceMaps);
-  
-  if (isSuccessful) {
-    console.log('✅ Build completed successfully!');
-  } else {
-    console.error('❌ Build failed!');
-    process.exit(1);
-  }
-}
-
-function performBuild(isDev: boolean, hasMaps: boolean): boolean {
-  // Mock build process
-  console.log(`Building with dev=${isDev}, maps=${hasMaps}`);
-  return true;
+function greetUser(user: User): void {
+  const status = user.isActive ? 'active' : 'inactive';
+  console.log(`Hello, ${user.name}! Status: ${status}`);
 }
 
 // Example usage
-if (import.meta.url === `file://${process.argv[1]}`) {
-  buildProject({
-    isDevelopment: process.env.NODE_ENV !== 'production',
-    hasSourceMaps: true,
-  });
-}
+const exampleUser: User = {
+  name: 'World',
+  isActive: true,
+};
 
+greetUser(exampleUser);
