@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { formatCount } from '@/src/libs/utils/format';
+import { formatCount } from '@/libs/utils/format';
 
 function App() {
   const [count, setCount] = useState(0);

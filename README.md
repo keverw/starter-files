@@ -151,13 +151,60 @@ To add another app (e.g., `admin`):
 
 All apps will build to their own folder in `dist/` at the root.
 
+## Path Aliases
+
+This project uses the `@/` alias for cleaner imports across the monorepo:
+
+```typescript
+// Instead of relative imports:
+import { formatCount } from '../../../libs/utils/format';
+
+// Use the @ alias:
+import { formatCount } from '@/libs/utils/format';
+```
+
+The `@/` alias points to the `src/` directory and works everywhere:
+
+- **In apps:** `@/libs/utils/format` → `src/libs/utils/format`
+- **In scripts:** `@/apps/demo/src/App` → `src/apps/demo/src/App`
+- **In libs:** `@/apps/demo/types` → `src/apps/demo/types`
+
+### Configuration
+
+The alias is configured in two places:
+
+**TypeScript (`tsconfig.json`):**
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+**Vite (`src/apps/demo/vite.config.ts`):**
+
+```typescript
+resolve: {
+  alias: {
+    '@': resolve(__dirname, '../../../src'),
+  },
+}
+```
+
+Both TypeScript and Vite need to be configured for the alias to work in development and production builds.
+
 ## Configuration Files
 
 - **`package.json`** - Root package with scripts
 - **`eslint.config.js`** - ESLint 9 flat config
-- **`tsconfig.json`** - Root TypeScript config
-- **`src/apps/demo/vite.config.ts`** - Vite configuration
-- **`src/apps/demo/tsconfig.json`** - Demo app TypeScript config
+- **`tsconfig.json`** - Root TypeScript config with path aliases
+- **`src/apps/demo/vite.config.ts`** - Vite configuration with alias resolution
+- **`src/apps/demo/tsconfig.json`** - Demo app TypeScript config (extends root)
 
 ## Tailwind CSS 4
 

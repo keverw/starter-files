@@ -1,5 +1,6 @@
 // Example script demonstrating TypeScript + ESLint in scripts folder
 // Run with: bun run scripts/example-script.ts
+import { formatCount } from '@/libs/utils/format';
 
 interface User {
   name: string;
@@ -18,3 +19,6 @@ const exampleUser: User = {
 };
 
 greetUser(exampleUser);
+
+// Demonstrate @ alias works in scripts
+console.log(formatCount(42));
