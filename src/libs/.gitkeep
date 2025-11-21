@@ -1,0 +1,19 @@
+# Libs Directory
+
+Shared libraries and utilities that can be used across all apps.
+
+Organize by feature or type:
+```
+src/libs/
+├── utils/          # General utilities
+├── hooks/          # React hooks
+├── components/     # Shared React components
+├── types/          # TypeScript types
+└── api/            # API clients
+```
+
+Import from apps using the @/ alias:
+```typescript
+import { formatCount } from '@/libs/utils/format';
+import { useDebounce } from '@/libs/hooks/useDebounce';
+```

@@ -1,0 +1,29 @@
+# Apps Directory
+
+Each application lives in its own subdirectory with its own configuration.
+
+Structure for each app:
+```
+src/apps/your-app/
+├── App.tsx
+├── main.tsx
+├── index.css
+├── index.html
+├── vite.config.ts
+├── tsconfig.json
+├── components/
+└── public/
+```
+
+Apps can import from shared libs using the @/ alias:
+```typescript
+import { formatCount } from '@/libs/utils/format';
+```
+
+Add dev/build scripts to root package.json:
+```json
+"scripts": {
+  "dev:your-app": "cd src/apps/your-app && vite",
+  "build:your-app": "cd src/apps/your-app && tsc --noEmit && vite build"
+}
+```
