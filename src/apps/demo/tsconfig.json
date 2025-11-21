@@ -4,6 +4,6 @@
     "types": ["vite/client"],
     "baseUrl": "../../.."
   },
-  "include": ["src/**/*"],
+  "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "dist"]
 }

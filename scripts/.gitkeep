@@ -1,0 +1,23 @@
+# Scripts Directory
+
+Place custom build scripts, utilities (such as database migrations), and automation tools here.
+
+These scripts can use the @/ alias to import from src/:
+
+```typescript
+import { formatCount } from '@/libs/utils/format';
+```
+
+Run scripts with:
+
+```bash
+bun run scripts/your-script.ts
+```
+
+Or add a shortcut to package.json:
+
+```json
+"scripts": {
+  "script:name": "bun run scripts/your-script.ts"
+}
+```

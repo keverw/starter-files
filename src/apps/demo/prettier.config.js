@@ -5,5 +5,5 @@ export default {
   ...baseConfig,
   plugins: ['prettier-plugin-tailwindcss'],
   // Tailwind CSS v4 requires specifying the stylesheet path
-  tailwindStylesheet: './src/index.css',
+  tailwindStylesheet: './index.css',
 };
