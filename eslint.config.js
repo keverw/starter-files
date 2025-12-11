@@ -132,7 +132,14 @@ export default tseslint.config(
       // Import/export rules
       'no-duplicate-imports': 'error',
       // Enforce case-sensitive import paths (prevents macOS/Windows vs Linux issues)
-      'import/no-unresolved': ['error', { caseSensitive: true }],
+      'import/no-unresolved': [
+        'error',
+        {
+          caseSensitive: true,
+          // Ignore runtime-provided built-in modules
+          ignore: ['^bun:', '^electron$'],
+        },
+      ],
       // Forbid importing deprecated modules/exports
       'import/no-deprecated': 'warn',
       // Forbid importing packages not listed in dependencies
