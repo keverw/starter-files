@@ -206,6 +206,51 @@ Both TypeScript and Vite need to be configured for the alias to work in developm
 - **`src/apps/demo/vite.config.ts`** - Vite configuration with alias resolution
 - **`src/apps/demo/tsconfig.json`** - Demo app TypeScript config (extends root)
 
+## Environment Configuration
+
+Environment variables are excluded from version control for security. The `.env` file is ignored by Git.
+
+### Setup
+
+If your project requires environment variables, document them in this README or create a separate `.env.example` file.
+
+**Option 1: Document in README (Recommended)**
+
+List your environment variables directly in this section with their purpose and example values:
+
+```bash
+# .env
+VITE_API_URL=https://api.example.com  # Backend API endpoint
+VITE_APP_NAME=MyApp                   # Application display name
+```
+
+**Option 2: Use .env.example file**
+
+Create a `.env.example` file at the root:
+
+```bash
+# .env.example
+VITE_API_URL=https://api.example.com
+VITE_APP_NAME=MyApp
+```
+
+Then copy it for local development and tweak as needed:
+
+```bash
+cp .env.example .env
+```
+
+### Using Environment Variables
+
+Vite exposes environment variables prefixed with `VITE_` to your client code:
+
+```typescript
+// Access in your app
+const apiUrl = import.meta.env.VITE_API_URL;
+```
+
+See [Vite's env variables documentation](https://vitejs.dev/guide/env-and-mode.html) for more details.
+
 ## Tailwind CSS 4
 
 This project uses Tailwind CSS 4 with the new native Vite plugin:
