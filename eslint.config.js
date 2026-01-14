@@ -50,9 +50,19 @@ export default [
       },
     },
     rules: {
-      // Enforce boolean variable naming conventions
+      // Enforce naming conventions
       '@typescript-eslint/naming-convention': [
         'error',
+        // Types and Interfaces: Must be PascalCase, no I prefix
+        {
+          selector: 'typeLike',
+          format: ['PascalCase'],
+          custom: {
+            regex: '^I[A-Z]',
+            match: false,
+          },
+        },
+        // Boolean variables
         {
           selector: 'variable',
           types: ['boolean'],
