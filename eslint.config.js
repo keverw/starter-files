@@ -120,6 +120,16 @@ export default [
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-non-null-assertion': 'warn',
+      // Enforce consistent type imports and prevent inline imports
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        {
+          prefer: 'type-imports',
+          disallowTypeAnnotations: true, // Prevent inline imports like import('...').Type
+          fixStyle: 'separate-type-imports',
+        },
+      ],
+      '@typescript-eslint/no-import-type-side-effects': 'error',
       // General code quality rules
       'no-console': 'warn',
       'no-debugger': 'error',
