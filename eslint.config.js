@@ -148,6 +148,7 @@ export default [
       // Import/export rules
       'no-duplicate-imports': 'off',
       'import/no-duplicates': 'error',
+      'import/first': 'error',
       // Enforce case-sensitive import paths (prevents macOS/Windows vs Linux issues)
       'import/no-unresolved': [
         'error',
