@@ -181,6 +181,7 @@ export default [
       curly: ['error', 'all'],
       'no-eval': 'error',
       'no-implied-eval': 'error',
+      'import/newline-after-import': 'error',
       // Prevent function declarations inside blocks
       'no-inner-declarations': 'error',
       // Limit callback nesting to prevent callback hell
