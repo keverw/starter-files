@@ -146,7 +146,8 @@ export default [
       'prefer-const': 'error',
       'no-var': 'error',
       // Import/export rules
-      'no-duplicate-imports': 'error',
+      'no-duplicate-imports': 'off',
+      'import/no-duplicates': 'error',
       // Enforce case-sensitive import paths (prevents macOS/Windows vs Linux issues)
       'import/no-unresolved': [
         'error',
