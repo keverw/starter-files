@@ -120,6 +120,11 @@ export default [
             'use',
             'show',
           ],
+          // Allow unused parameters prefixed with _ to bypass the naming requirement
+          filter: {
+            regex: '^_',
+            match: false,
+          },
         },
       ],
       // Detect unused variables
