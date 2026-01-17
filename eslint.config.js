@@ -5,6 +5,7 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import importPlugin from 'eslint-plugin-import';
 import unicorn from 'eslint-plugin-unicorn';
+import checkFile from 'eslint-plugin-check-file';
 
 export default [
   eslint.configs.recommended,
@@ -179,6 +180,8 @@ export default [
         'error',
         {
           devDependencies: [
+            // *.test.ts naming convention is preferred
+            // Both *.test.ts and *.spec.ts are supported for compatibility
             '**/*.test.ts',
             '**/*.test.tsx',
             '**/*.spec.ts',
@@ -345,6 +348,21 @@ export default [
       ...reactHooks.configs.recommended.rules,
       // JSX Accessibility rules
       ...jsxA11y.flatConfigs.recommended.rules,
+    },
+  },
+  {
+    // Warn about *.spec.ts files - prefer *.test.ts instead
+    plugins: {
+      'check-file': checkFile,
+    },
+    rules: {
+      'check-file/filename-blocklist': [
+        'warn',
+        {
+          '**/*.spec.ts': '*.test.ts',
+          '**/*.spec.tsx': '*.test.tsx',
+        },
+      ],
     },
   },
   {
