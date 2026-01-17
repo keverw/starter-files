@@ -352,6 +352,7 @@ export default [
   },
   {
     // Warn about *.spec.ts files - prefer *.test.ts instead
+    files: ['**/*.spec.ts', '**/*.spec.tsx'],
     plugins: {
       'check-file': checkFile,
     },
