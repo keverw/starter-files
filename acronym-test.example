@@ -34,9 +34,9 @@ function getUserID(userID: string): string {
   const htmlContent = '<div>test</div>'; // OK
   const HTMLContent = '<div>test2</div>'; // Also OK
 
-  // Test: This should ERROR (PascalCase not starting with acronym)
-  const SomeRandomName = 'test'; // Should error
-  const UserName = 'john'; // Should error
+  // PascalCase variables are now allowed (for React contexts, HOCs, etc.)
+  const SomeRandomName = 'test'; // Correct (PascalCase allowed)
+  const UserName = 'john'; // Correct (PascalCase allowed)
 
   // Acronyms at start (always lowercase in variables)
   const id = '123'; // Correct
@@ -71,5 +71,17 @@ interface APIResponse {
   created_at: string; // Correct (snake_case allowed)
   is_active: boolean; // Correct (snake_case allowed)
 }
+
+// React component props with PascalCase properties
+interface RouteErrorBoundaryProps {
+  NotFoundComponent?: React.ComponentType<{ error?: unknown }>; // Correct (PascalCase for component)
+  ApplicationErrorComponent?: React.ComponentType<{ error: unknown }>; // Correct (PascalCase for component)
+  FallbackComponent?: React.ComponentType; // Correct (PascalCase for component)
+}
+
+// React contexts and HOCs with PascalCase variables
+const UnirendContext = { test: 'value' }; // Correct (PascalCase for contexts)
+const ThemeContext = { test: 'value' }; // Correct (PascalCase for contexts)
+const WithAuth = () => null; // Correct (PascalCase for HOCs)
 
 export {};
