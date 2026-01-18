@@ -56,4 +56,20 @@ function getUserID(userID: string): string {
   return userID;
 }
 
+// ✅ CORRECT - API interfaces with snake_case properties
+interface RedirectInfo {
+  target: string;
+  permanent: boolean;
+  preserve_query?: boolean; // Should be OK (snake_case allowed for properties)
+  max_redirects?: number; // Should be OK
+}
+
+interface APIResponse {
+  user_id: string; // Correct (snake_case with acronym is OK)
+  userID: string; // Correct (camelCase with uppercase acronym)
+  userId: string; // Error: should be 'userID' (lowercase acronym in camelCase)
+  created_at: string; // Correct (snake_case allowed)
+  is_active: boolean; // Correct (snake_case allowed)
+}
+
 export {};
