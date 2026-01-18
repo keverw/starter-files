@@ -28,7 +28,7 @@ export class ExampleClass {
     return this.name;
   }
 
-  public getId(): number {
+  public getID(): number {
     return this.id;
   }
 

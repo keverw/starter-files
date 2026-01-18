@@ -1,0 +1,59 @@
+// Test file for acronym capitalization rules
+// Run: npx eslint acronym-test.ts
+
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
+// ❌ ERRORS - These should fail linting (lowercase 'Id', 'Ip', 'Api')
+type UserId = string; // Error: should be 'UserID'
+type IpAddress = string; // Error: should be 'IPAddress'
+class ApiClient {} // Error: should be 'APIClient'
+
+function getUserId(userId: string): string {
+  // Error: both should be 'getUserID' and 'userID'
+  const serverIp = '192.168.1.1'; // Error: should be 'serverIP'
+  const apiKey = 'secret'; // OK (lowercase acronym at start)
+  const htmlContent = '<div>test</div>'; // OK (lowercase acronym at start)
+  const jsonData = { test: true }; // OK (lowercase acronym at start)
+  const imageUrl = 'https://example.com/image.png'; // Error: should be 'imageURL'
+
+  return userId;
+}
+
+// ✅ CORRECT - These should pass linting
+type UserID = string; // Correct
+type IPAddress = string; // Correct
+class APIClient {} // Correct
+
+function getUserID(userID: string): string {
+  const serverIP = '192.168.1.1'; // Correct
+  const imageURL = 'https://example.com/image.png'; // Correct
+
+  // Variables starting with acronyms (OK to be lowercase OR uppercase)
+  const apiKey = 'secret'; // OK
+  const APIKey = 'secret-2'; // Also OK
+  const htmlContent = '<div>test</div>'; // OK
+  const HTMLContent = '<div>test2</div>'; // Also OK
+
+  // Test: This should ERROR (PascalCase not starting with acronym)
+  const SomeRandomName = 'test'; // Should error
+  const UserName = 'john'; // Should error
+
+  // Acronyms at start (always lowercase in variables)
+  const id = '123'; // Correct
+  const ip = '192.168.1.1'; // Correct
+  const api = 'v1'; // Correct
+
+  // Multiple acronyms
+  const userIDFromAPI = '123'; // Correct
+  const APIToJSON = (data: unknown) => data; // Correct
+  const HTMLToJSON = (html: string) => html; // Correct
+
+  // Constants (UPPER_CASE)
+  const API_KEY = 'const-key'; // Correct
+  const HTML_CONTENT = '<div></div>'; // Correct
+  const USER_ID = '456'; // Correct
+
+  return userID;
+}
+
+export {};
