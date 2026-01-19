@@ -3,7 +3,7 @@
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-// ❌ ERRORS - These should fail linting (lowercase 'Id', 'Ip', 'Api')
+// ❌ ERRORS - These should fail linting (lowercase 'Id', 'Ip', 'Api', 'Ms')
 type UserId = string; // Error: should be 'UserID'
 type IpAddress = string; // Error: should be 'IPAddress'
 class ApiClient {} // Error: should be 'APIClient'
@@ -15,6 +15,8 @@ function getUserId(userId: string): string {
   const htmlContent = '<div>test</div>'; // OK (lowercase acronym at start)
   const jsonData = { test: true }; // OK (lowercase acronym at start)
   const imageUrl = 'https://example.com/image.png'; // Error: should be 'imageURL'
+  const timeoutMs = 5000; // Error: should be 'timeoutMS'
+  const delayMs = 100; // Error: should be 'delayMS'
 
   return userId;
 }
@@ -27,6 +29,8 @@ class APIClient {} // Correct
 function getUserID(userID: string): string {
   const serverIP = '192.168.1.1'; // Correct
   const imageURL = 'https://example.com/image.png'; // Correct
+  const timeoutMS = 5000; // Correct
+  const delayMS = 100; // Correct
 
   // Variables starting with acronyms (OK to be lowercase OR uppercase)
   const apiKey = 'secret'; // OK
@@ -42,6 +46,7 @@ function getUserID(userID: string): string {
   const id = '123'; // Correct
   const ip = '192.168.1.1'; // Correct
   const api = 'v1'; // Correct
+  const ms = 1000; // Correct
 
   // Multiple acronyms
   const userIDFromAPI = '123'; // Correct
@@ -52,6 +57,7 @@ function getUserID(userID: string): string {
   const API_KEY = 'const-key'; // Correct
   const HTML_CONTENT = '<div></div>'; // Correct
   const USER_ID = '456'; // Correct
+  const TIMEOUT_MS = 3000; // Correct
 
   return userID;
 }
