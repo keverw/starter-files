@@ -14,7 +14,9 @@ export default [
     ignores: [
       // Build outputs
       '**/dist/**',
+      '**/build/**',
       '**/coverage/**',
+      '**/tmp/**',
       // Dependencies
       '**/node_modules/**',
       // Config files
@@ -451,6 +453,6 @@ export default [
   {
     // Disable type-checked rules for JavaScript files
     ...tseslint.configs.disableTypeChecked,
-    files: ['**/*.js', '**/*.jsx'],
+    files: ['**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'],
   },
 ];
