@@ -6,6 +6,7 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 import importPlugin from 'eslint-plugin-import';
 import unicorn from 'eslint-plugin-unicorn';
 import checkFile from 'eslint-plugin-check-file';
+import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default [
   eslint.configs.recommended,
@@ -340,6 +341,7 @@ export default [
       react,
       'react-hooks': reactHooks,
       'jsx-a11y': jsxA11y,
+      'react-refresh': reactRefresh,
     },
     languageOptions: {
       parserOptions: {
@@ -366,6 +368,11 @@ export default [
       ...reactHooks.configs.recommended.rules,
       // JSX Accessibility rules
       ...jsxA11y.flatConfigs.recommended.rules,
+      // React Refresh: only export components (required for Fast Refresh / HMR)
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
     },
   },
   {
@@ -387,6 +394,7 @@ export default [
       react,
       'react-hooks': reactHooks,
       'jsx-a11y': jsxA11y,
+      'react-refresh': reactRefresh,
     },
     languageOptions: {
       parserOptions: {
@@ -411,6 +419,11 @@ export default [
       ...reactHooks.configs.recommended.rules,
       // JSX Accessibility rules
       ...jsxA11y.flatConfigs.recommended.rules,
+      // React Refresh: only export components (required for Fast Refresh / HMR)
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
     },
   },
   {
@@ -441,6 +454,7 @@ export default [
       '@typescript-eslint/no-unsafe-return': 'off',
       '@typescript-eslint/no-unsafe-call': 'off',
       'max-nested-callbacks': 'off', // Test frameworks naturally have deep nesting
+      'react-refresh/only-export-components': 'off', // Test files export utilities/mocks, not just components
     },
   },
   {
